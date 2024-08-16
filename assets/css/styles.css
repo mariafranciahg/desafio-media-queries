@@ -1,0 +1,327 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    display: grid;
+    grid-template-areas: 
+    "menu" "header" "main" "footer";
+    grid-template-rows: 1fr 1.5fr 8fr 1fr;
+    height: 100vh;
+    color: rgb(78, 26, 1);
+    font-family: "Platypi", serif;
+}
+
+/******** BARRA BUSQUEDA ********/
+header {
+    grid-area: header;
+    background-color: #f9eddf;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    padding-top: 5rem;
+}
+header p {
+    padding-bottom: .6rem;
+    font-weight: 600;
+}
+
+select{
+    width: 90%;
+    height: 35px;
+}
+
+/******** BARRA MENU ********/
+aside {
+    grid-area: menu;
+    background-color: #cdf462;
+    display: flex;
+    padding: .5rem;
+    justify-content: center;
+    align-items: center; 
+    position: fixed;
+    width: 100vw;
+}
+
+aside img {
+    height: 50px;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 28vw;
+}
+
+.titulo h2{
+    padding-left: .7rem;
+    color: white;
+    text-shadow: 1px 1px 5px #431e03;
+}
+
+.btnMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    background-color: #cdf462;
+    font-size: 1.8rem;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.312);
+}
+
+.btnMenu:focus + .menu {
+    transform: translateX(0rem);
+
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 12rem;
+    transform: translateX(15rem);
+    transition: 1s all;
+    background-color: hsla(76, 89%, 78%, 0.694);
+}
+
+.menu ul {
+    padding-top: .5rem;
+    list-style: none;
+    
+}
+.menu li {
+    padding: 1rem;
+    
+    
+}
+.menu a {
+    text-decoration: none;
+    color: rgb(78, 26, 1);
+    text-shadow: .2px .2px 5px hsl(0, 0%, 100%);
+    font-weight: 600;
+}
+
+.menu li:hover {
+    background-color: #f9eddf;
+    
+}
+
+/******** SECCIÓN PRINCIPAL********/
+main {
+    grid-area: main;
+    padding: 1.5rem;
+
+}
+
+main div {
+    margin: 1rem;
+}
+
+
+/******** FOOTER ********/
+footer {
+    grid-area: footer;
+    background-color: #f8a870;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1rem;
+    
+}
+footer i {
+    font-size: 1.5rem;
+    padding-bottom: .5rem;
+    padding-right: .5rem;
+}
+
+
+/************** CARD **************/
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10%;
+    border-style: solid;
+    border-color: #f8e5d0;
+    border-width: 1.2px;
+    align-items: center;
+    justify-content: space-between;
+    padding: .8rem 0;
+}
+
+.card img {
+    width: 90%;
+    height: 75%;
+}
+
+.card p {
+    padding: 0.3rem;
+}
+
+.card button {
+    margin-top: 0.3rem;
+    padding: .6rem;
+    width: 50%;
+    border: none;
+    background-color:#f8a870;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0px 0px 2px rgb(108, 76, 76);
+}
+
+.card:hover {
+    box-shadow: 2px 8px 20px rgba(42, 42, 42, 0.494);
+    transform: scale(1.05);
+    transition: 0.5s;
+    
+}
+.card button:hover {
+    background-color: #f8ccac;
+    transition: .5s;
+    cursor: pointer;
+}
+
+
+/******** DISEÑO TABLET ********/
+
+@media (min-width: 576px) {
+    body {
+        grid-template-areas: 
+        "menu menu"
+        "header main"
+        "footer footer";
+        grid-template-rows: 1fr 8fr 1fr;
+        grid-template-columns: 2fr 8fr;
+    }
+
+    header {
+        margin: 0;
+        justify-content: start;
+        padding: 3rem .2rem;
+    }
+
+    aside {
+        height: 10%;
+        display: flex;
+        justify-content: space-between;
+        width: 100vw;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 20px;
+        padding: 1rem;
+        overflow: auto;
+        justify-items: center;
+        
+    }
+
+    .btnMenu {
+        display: none;
+    }
+
+    .titulo {
+        margin: 0 ;
+        padding: 0 2rem;
+        
+    }
+
+    .menu {
+        transform: none;
+        background-color: inherit;
+        position: unset;
+        width: 100vw;
+        padding: 0 2rem;
+    }
+
+    .menu ul {
+        display: flex;
+        justify-content: end;
+    }
+
+    footer {
+        padding: .3rem;
+    }
+}
+
+/******** DISEÑO ESCRITORIO ********/
+
+@media (min-width: 992px) {
+    body  {
+        display: grid;
+        grid-template-areas: 
+        "menu header header"
+        "menu main main"
+        "footer main main";
+        height: 100vh;
+        grid-template-columns: 1.8fr 8.2fr;
+        grid-template-rows: 1.5fr 8fr 1.2fr;
+    } 
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 20px;
+        padding: 1rem;
+        overflow: auto;
+        justify-items: center;
+        
+    }
+    aside {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        text-align: center;
+        padding-top: 2rem;
+        position: unset;
+        width: auto;
+        height: auto;
+    }
+
+    header {
+        padding: 0;
+        justify-content: center;
+    }
+    
+    
+    
+    .menu {
+         width: 100%;
+        font-size: 1.1rem;
+        padding: 0;
+    }
+
+    .titulo {
+       
+        padding: 0;
+        
+    }
+
+
+    .menu ul {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card {
+        height: 370px;
+        width: 90%;
+    }
+
+    footer {
+        padding: .8rem .5rem;
+    }
+}
+
+
